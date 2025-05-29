@@ -1,7 +1,6 @@
 package com.example.mini_project_04_back.dto;
 
 import lombok.*;
-import org.hibernate.annotations.NotFound;
 
 import java.time.LocalDateTime;
 
