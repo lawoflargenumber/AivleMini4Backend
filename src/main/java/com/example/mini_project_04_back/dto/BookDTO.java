@@ -4,6 +4,7 @@ import com.example.mini_project_04_back.domain.Book;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class BookDTO {
@@ -54,6 +55,12 @@ public class BookDTO {
                     .coverImageUrl(book.getCoverImageUrl())
                     .createdAt(book.getCreatedAt())
                     .build();
+        }
+
+        public static List<BookSimpleResponse> fromEntityList(List<Book> books) {
+            return books.stream()
+                    .map(BookSimpleResponse::fromEntity)
+                    .collect(Collectors.toList());
         }
     }
 

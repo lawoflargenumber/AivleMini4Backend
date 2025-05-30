@@ -1,6 +1,8 @@
 package com.example.mini_project_04_back.service;
 
+import com.example.mini_project_04_back.domain.Book;
 import com.example.mini_project_04_back.dto.BookDTO;
+import com.example.mini_project_04_back.exception.ResourceNotFoundException;
 import com.example.mini_project_04_back.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,17 +17,21 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public BookDTO.BookDetailedResponse createBook(BookDTO.BookCreateRequest book) {
-        return null;
+        Book entityBook = book.toEntity();
+        Book saveBook = bookRepository.save(entityBook);
+        return BookDTO.BookDetailedResponse.fromEntity(saveBook);
     }
 
     @Override
     public List<BookDTO.BookSimpleResponse> getAllBooks() {
-        return List.of();
+        return BookDTO.BookSimpleResponse.fromEntityList(bookRepository.findAll());
     }
 
     @Override
     public BookDTO.BookSimpleResponse getBookById(Long id) {
-        return null;
+        return BookDTO.BookSimpleResponse.fromEntity(bookRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("해당 아이디를 갖는 책")
+        ));
     }
 
     @Override

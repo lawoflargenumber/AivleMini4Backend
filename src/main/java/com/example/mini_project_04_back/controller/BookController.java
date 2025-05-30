@@ -2,7 +2,7 @@ package com.example.mini_project_04_back.controller;
 
 import com.example.mini_project_04_back.dto.BookDTO;
 import com.example.mini_project_04_back.exception.ResourceNotFoundException;
-import com.example.mini_project_04_back.service.BookServiceImpl;
+import com.example.mini_project_04_back.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +14,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookController {
 
-    private final BookServiceImpl bookService;
+    private final BookService bookService;
 
     @PostMapping("/books")
     public ResponseEntity<?> createBook(@RequestBody BookDTO.BookCreateRequest bookCreateRequest) {
         try {
+            System.out.println("=== Post createBook ===");
             BookDTO.BookDetailedResponse book = bookService.createBook(bookCreateRequest);
             return new ResponseEntity<BookDTO.BookDetailedResponse>(book, HttpStatus.CREATED);
         } catch (Exception e) {
