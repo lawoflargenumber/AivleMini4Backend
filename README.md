@@ -9,7 +9,7 @@
 ### Book 
 | 이름 | HTTP 명령어 | URL | 요청 형식 | 응답 형식 |
 | --- | --- | --- | --- | --- |
-| 신규 도서 등록 | POST | /books | `BookCreateRequest`<br> { <br> &nbsp; title, <br> &nbsp; content <br>} | `BookDetailedResponse` <br> { <br> &nbsp; id, <br> &nbsp; title, <br> &nbsp; coverImageUrl, <br> &nbsp;  createdAt,<br> &nbsp; updatedAt <br> } |
+| 신규 도서 등록 | POST | /books | `BookCreateRequest`<br> { <br> &nbsp; title, <br> &nbsp; content, <br> &nbsp; coverImageUrl <br>} | `BookDetailedResponse` <br> { <br> &nbsp; id, <br> &nbsp; title, <br> &nbsp; coverImageUrl, <br> &nbsp;  createdAt,<br> &nbsp; updatedAt <br> } |
 | 도서 목록 확인 | GET | /books | - |  |
 | 도서 상세 정보 조회 | GET | /books/{id} | - | `BookDetailedResponse` <br> { <br> &nbsp; id, <br> &nbsp; title, <br> &nbsp; coverImageUrl, <br> &nbsp;  createdAt,<br> &nbsp; updatedAt <br> } |
 | 도서 수정 | PATCH | /books/{id} | `BookUpdateRequest` <br> { <br> &nbsp; title, <br> &nbsp; content, <br> &nbsp; coverImageUrl <br> } | `BookDetailedResponse` <br> { <br> &nbsp; id, <br> &nbsp; title, <br> &nbsp; coverImageUrl, <br> &nbsp;  createdAt,<br> &nbsp; updatedAt <br> } |
@@ -18,7 +18,7 @@
 ### Comment
 | 이름 | HTTP 명령어 | URL | 요청 형식 | 응답 형식 |
 | --- | --- | --- | --- | --- |
-| 신규 댓글 등록 | POST | /books{id}/comments | `CommentCreateRequest` <br> { <br> &nbsp; content <br> } | `CommentDetailedResponse` <br> { <br> &nbsp; id, <br> &nbsp; bookId, <br> &nbsp; content,<br> &nbsp; createdAt, <br> &nbsp; updatedAt <br>} |
-| 도서의 댓글 목록 | GET | /books{id}/comments | - | `CommentDetailedResponse` <br> { <br> &nbsp; id, <br> &nbsp; bookId, <br> &nbsp; content,<br> &nbsp; createdAt, <br> &nbsp; updatedAt <br>} |
+| 신규 댓글 등록 | POST | /books/{id}/comments | `CommentCreateRequest` <br> { <br> &nbsp; content <br> } | `CommentDetailedResponse` <br> { <br> &nbsp; id, <br> &nbsp; bookId, <br> &nbsp; content,<br> &nbsp; createdAt, <br> &nbsp; updatedAt <br>} |
+| 도서의 댓글 목록 | GET | /books/{id}/comments | - | `CommentDetailedResponse` <br> { <br> &nbsp; id, <br> &nbsp; bookId, <br> &nbsp; content,<br> &nbsp; createdAt, <br> &nbsp; updatedAt <br>} |
 | 댓글 수정 | PATCH | /comments/{id} | `CommentUpdateRequest`<br> { <br> &nbsp; content <br> } | `CommentDetailedResponse` <br> { <br> &nbsp; id, <br> &nbsp; bookId, <br> &nbsp; content,<br> &nbsp; createdAt, <br> &nbsp; updatedAt <br>} |
 | 댓글 삭제 | DELETE | /comments/{id} | - | - |
