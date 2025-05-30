@@ -18,7 +18,7 @@ public class CommentDTO {
         @NotBlank(message = "내용은 필수 입력 값입니다.")
         private String content;
 
-        private Comment toEntity() {
+        public Comment toEntity() {
             return Comment.builder()
                     .content(this.content)
                     .build();
@@ -47,7 +47,7 @@ public class CommentDTO {
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
 
-        private static CommentDetailedResponse fromEntity(Comment comment) {
+        public static CommentDetailedResponse fromEntity(Comment comment) {
             return CommentDetailedResponse.builder()
                     .id(comment.getId())
                     .bookId(comment.getBook().getId())
