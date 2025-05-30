@@ -1,8 +1,10 @@
 package com.example.mini_project_04_back.dto;
 
+import com.example.mini_project_04_back.domain.Book;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.stream.Collectors;
 
 public class BookDTO {
 
@@ -13,6 +15,15 @@ public class BookDTO {
     public static class BookCreateRequest {
         private String title;
         private String content;
+        private String coverImageUrl;
+
+        public Book toEntity() {
+            return Book.builder()
+                    .title(this.title)
+                    .content(this.content)
+                    .coverImageUrl(this.coverImageUrl)
+                    .build();
+        }
     }
 
     @Getter
@@ -35,6 +46,15 @@ public class BookDTO {
         private String title;
         private String coverImageUrl;
         private LocalDateTime createdAt;
+
+        public static BookSimpleResponse fromEntity(Book book) {
+            return BookSimpleResponse.builder()
+                    .id(book.getId())
+                    .title(book.getTitle())
+                    .coverImageUrl(book.getCoverImageUrl())
+                    .createdAt(book.getCreatedAt())
+                    .build();
+        }
     }
 
     @Getter
@@ -45,9 +65,21 @@ public class BookDTO {
     public static class BookDetailedResponse {
         private Long id;
         private String title;
+        private String content;
         private String coverImageUrl;
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
+
+        public static BookDetailedResponse fromEntity(Book book) {
+            return BookDetailedResponse.builder()
+                    .id(book.getId())
+                    .title(book.getTitle())
+                    .content(book.getContent())
+                    .coverImageUrl(book.getCoverImageUrl())
+                    .createdAt(book.getCreatedAt())
+                    .updatedAt(book.getUpdatedAt())
+                    .build();
+        }
     }
 
 
