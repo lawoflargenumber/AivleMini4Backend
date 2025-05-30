@@ -41,6 +41,7 @@ public class Book {
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @Builder.Default
     private List<Comment> comments = new ArrayList<>();
 
     public void addComment(Comment comment) {

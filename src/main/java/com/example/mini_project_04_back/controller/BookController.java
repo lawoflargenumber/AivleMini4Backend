@@ -39,8 +39,8 @@ public class BookController {
     @GetMapping("/books/{id}")
     public ResponseEntity<?> getBookById(@PathVariable Long id) {
         try {
-            BookDTO.BookSimpleResponse book = bookService.getBookById(id);
-            return new ResponseEntity<BookDTO.BookSimpleResponse>(book, HttpStatus.OK);
+            BookDTO.BookDetailedResponse book = bookService.getBookById(id);
+            return new ResponseEntity<BookDTO.BookDetailedResponse>(book, HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
