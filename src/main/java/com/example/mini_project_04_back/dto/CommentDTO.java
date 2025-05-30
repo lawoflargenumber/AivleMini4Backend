@@ -1,6 +1,7 @@
 package com.example.mini_project_04_back.dto;
 
 import com.example.mini_project_04_back.domain.Book;
+import com.example.mini_project_04_back.domain.Comment;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
@@ -16,6 +17,12 @@ public class CommentDTO {
 
         @NotBlank(message = "내용은 필수 입력 값입니다.")
         private String content;
+
+        private Comment toEntity() {
+            return Comment.builder()
+                    .content(this.content)
+                    .build();
+        }
     }
 
     @Getter
@@ -39,5 +46,15 @@ public class CommentDTO {
         private String content;
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
+
+        private static CommentDetailedResponse fromEntity(Comment comment) {
+            return CommentDetailedResponse.builder()
+                    .id(comment.getId())
+                    .bookId(comment.getBook().getId())
+                    .content(comment.getContent())
+                    .createdAt(comment.getCreatedAt())
+                    .updatedAt(comment.getUpdatedAt())
+                    .build();
+        }
     }
 }
