@@ -45,6 +45,7 @@ public class BookServiceImpl implements BookService{
 
         info.setTitle(book.getTitle());
         info.setContent(book.getContent());
+        info.setCoverImageUrl(book.getCoverImageUrl());
 
         return BookDTO.BookDetailedResponse.fromEntity(info);
     }
