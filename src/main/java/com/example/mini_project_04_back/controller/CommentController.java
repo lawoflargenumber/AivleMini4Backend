@@ -4,6 +4,7 @@ import com.example.mini_project_04_back.dto.BookDTO;
 import com.example.mini_project_04_back.dto.CommentDTO;
 import com.example.mini_project_04_back.exception.ResourceNotFoundException;
 import com.example.mini_project_04_back.service.BookServiceImpl;
+import com.example.mini_project_04_back.service.CommentService;
 import com.example.mini_project_04_back.service.CommentServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommentController {
 
-    private final CommentServiceImpl commentService;
+    private final CommentService commentService;
 
     @PostMapping("/books/{id}/comments")
     public ResponseEntity<?> createComment(@RequestBody CommentDTO.CommentCreateRequest commentCreateRequest, @PathVariable Long id) {

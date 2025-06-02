@@ -4,6 +4,7 @@ import com.example.mini_project_04_back.domain.Book;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class BookDTO {
@@ -67,6 +68,7 @@ public class BookDTO {
         private String title;
         private String content;
         private String coverImageUrl;
+        private List<CommentDTO.CommentDetailedResponse> comments;
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
 
@@ -78,6 +80,11 @@ public class BookDTO {
                     .coverImageUrl(book.getCoverImageUrl())
                     .createdAt(book.getCreatedAt())
                     .updatedAt(book.getUpdatedAt())
+                    .comments(
+                            book.getComments().stream()
+                                    .map(CommentDTO.CommentDetailedResponse::fromEntity)
+                                    .collect(Collectors.toList())
+                    )
                     .build();
         }
     }
