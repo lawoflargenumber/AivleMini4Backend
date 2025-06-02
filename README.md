@@ -3,10 +3,12 @@
 # 기술 스택 
 * 언어: Java
 * 프레임워크: Spring Boot
+* 데이터 베이스 연동: Spring JPA
 * 기타: Git
 
 # 프로젝트 구조 (백엔드) 
-├── backend/
+```text
+├── backend/ <br>
     │   ├── src/ main/ java/ com/ example/ mini_project_04_back/
     │   │   ├── controllers/                       # HTTP 요청을 처리하는 컨트롤러 클래스들을 모아둔 패키지
     │   │   │   ├─ BookController.java             # 책(Book) 관련 API 요청을 처리하는 컨트롤러
@@ -26,7 +28,7 @@
     │   │   │   ├─ CommentService.java             # 댓글 관련 비즈니스 로직을 정의하는 서비스 인터페이스
     |   |   |   ├─ CommentServiceImpl.java         # CommentService 인터페이스의 구현체
     │   │   └── MiniProject4Application.java       # 메인 애플리케이션 파일
-
+```
 # API 정의서
 ## 기본 정보
 **API 이름**: Book Management System <br>
