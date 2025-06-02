@@ -8,7 +8,7 @@
 
 # 프로젝트 구조 (백엔드) 
 ```text
-├── backend/ <br>
+├── backend
     │   ├── src/ main/ java/ com/ example/ mini_project_04_back/
     │   │   ├── controllers/                       # HTTP 요청을 처리하는 컨트롤러 클래스들을 모아둔 패키지
     │   │   │   ├─ BookController.java             # 책(Book) 관련 API 요청을 처리하는 컨트롤러
