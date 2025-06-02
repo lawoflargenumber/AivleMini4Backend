@@ -33,9 +33,9 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public BookDTO.BookSimpleResponse getBookById(Long id) {
+    public BookDTO.BookDetailedResponse getBookById(Long id) {
         Book book = bookRepository.findById(id).orElseThrow();
-        return BookDTO.BookSimpleResponse.fromEntity(book);
+        return BookDTO.BookDetailedResponse.fromEntity(book);
     }
 
     @Override

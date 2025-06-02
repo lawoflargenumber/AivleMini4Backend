@@ -2,6 +2,7 @@ package com.example.mini_project_04_back.controller;
 
 import com.example.mini_project_04_back.dto.BookDTO;
 import com.example.mini_project_04_back.exception.ResourceNotFoundException;
+import com.example.mini_project_04_back.service.BookService;
 import com.example.mini_project_04_back.service.BookServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookController {
 
-    private final BookServiceImpl bookService;
+    private final BookService bookService;
 
     @PostMapping("/books")
     public ResponseEntity<?> createBook(@RequestBody BookDTO.BookCreateRequest bookCreateRequest) {
@@ -39,8 +40,8 @@ public class BookController {
     @GetMapping("/books/{id}")
     public ResponseEntity<?> getBookById(@PathVariable Long id) {
         try {
-            BookDTO.BookSimpleResponse book = bookService.getBookById(id);
-            return new ResponseEntity<BookDTO.BookSimpleResponse>(book, HttpStatus.OK);
+            BookDTO.BookDetailedResponse book = bookService.getBookById(id);
+            return new ResponseEntity<BookDTO.BookDetailedResponse>(book, HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
